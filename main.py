@@ -1,3 +1,5 @@
+# Code Changed, Optimized And Commented By: OZX-OG
+
 from PIL import Image, ImageDraw, ImageFont
 import textwrap, requests, json
 
