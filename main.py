@@ -42,6 +42,3 @@ def make_Image():
 
 if __name__ == "__main__":
     make_Image()
-
-if __name__ == "__main__":
-    make_Image()
