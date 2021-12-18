@@ -3,6 +3,9 @@
 from PIL import Image, ImageDraw, ImageFont
 import textwrap, requests, json
 
+from PIL import Image, ImageDraw, ImageFont
+import textwrap, requests, json
+
 def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
@@ -22,17 +25,23 @@ def draw_multiple_line_text(image, text, font, text_color, text_start_height):
 
 
 def make_Image():
-    image = Image.new('RGB', (1080, 1920), color = (0, 0, 0))
+    resolution = (1080, 1920)
+    background_color = (0, 0, 0) #black
     fontsize = 60  
-    font = ImageFont.truetype("arial.ttf", fontsize)
-    text1 = "Quote:"
-    text2 = get_quote()
-
     text_color = "white"
     text_start_height = 750
-    draw_multiple_line_text(image, text1, font, text_color, text_start_height)
-    draw_multiple_line_text(image, text2, font, text_color, (text_start_height + 60))
-    image.save('pil_text.jpg')
+
+    image = Image.new('RGB', resolution, color = background_color)
+    font = ImageFont.truetype("arial.ttf", fontsize)
+    text_q = "Quote:"
+    text = get_quote()
+
+    draw_multiple_line_text(image, text_q, font, text_color, text_start_height)
+    draw_multiple_line_text(image, text, font, text_color, (text_start_height + 60))
+    image.save('Image.jpg')
+
+if __name__ == "__main__":
+    make_Image()
 
 if __name__ == "__main__":
     make_Image()
